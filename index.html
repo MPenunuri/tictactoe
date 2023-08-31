@@ -1,1 +1,55 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;600&family=Gochi+Hand&family=Montserrat:wght@600&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Tic tac toe</h1>
+    </header>
+    <section id="selectGameContainer">
+        <h2>What will the game be like?</h2>
+        <div id="p_VS_m_Op_Container">
+            <p>Player vs. Machine</p>
+        </div>
+        <div id="p_VS_p_Op_Container">
+            <p>Player vs. Player</p>
+        </div>
+        <div id="m_VS_m_Op_Container">
+            <p>Machine vs. Machine</p>
+        </div>
+        <button id="startGameButton">Start</button>
+    </section>
+    <section id="gameContainer">
+        <div id="scoreboard">
+            <div id="player1score">
+                <div id="firstDigit_p1">1</div>
+                <div id="secondDigit_p1">0</div>
+            </div>
+            <div id="player2score">
+                <div id="firstDigit_p2"></div>
+                <div id="secondDigit_p2"></div>
+            </div>
+        </div>
+        <div id="gridContainer">
+            <div id="cell1"></div>
+            <div id="cell2"></div>
+            <div id="cell3"></div>
+            <div id="cell4"></div>
+            <div id="cell5"></div>
+            <div id="cell6"></div>
+            <div id="cell7"></div>
+            <div id="cell8"></div>
+            <div id="cell9"></div>
+        </div>
+    </section>
+    <footer>Front-end project by MPenunuri.</footer>
+</body>
+</html>
