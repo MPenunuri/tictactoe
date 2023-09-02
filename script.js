@@ -1,18 +1,17 @@
-const setPlayers = (() => {
-    const Player = (int) => {
+const setPlayers = (player1, player2) => {
+    const Player = (int,str) => {
         let id = int;
-        let name = '';
+        let name = str;
         let active = false;
-        const setName = (str) => name = str;
         const mark = (chosenCell) => {
             chosenCell.setPlayer(id);
             chosenCell.setMark();
-        }; return {id, name, active, setName, mark}
+        }; return {id, name, active, mark}
     };
-    const players = [Player(1),Player(2)];
+    const players = [Player(1,player1),Player(2,player2)];
     players[0].active = true; //Remover tras depuración y generar algoritmo de inicio aleatorio
     return players;
-})();
+};
 
 const setGameboard = (() => {
     const Cell = (row, col) => {
@@ -96,12 +95,12 @@ const setRules = ((activePlayer,arrayOfCells) =>{
     return checkBoard(activePlayer);
 });
 
-const ticTacToe = (row,col) =>{
-    const players = setPlayers;
+const ticTacToe = (arrayOfplayers) =>{
+    const players = arrayOfplayers;
     const activePlayer =  players.find(player => player.active === true);
-    let choice = setGameboard[row][col];
 
-    const playTurn = () => {
+    const playTurn = (row,col) => {
+        let choice = setGameboard[row][col];
         if(choice.data.marked === false){activePlayer.mark(choice)};
     };
 
@@ -115,26 +114,33 @@ const ticTacToe = (row,col) =>{
         }
     };
 
-    const gameControler = () => {
-        playTurn();
+    const gameControler = (row,col) => {
+        playTurn(row,col);
         if (setRules(activePlayer,setGameboard) === false){changeTurns()} 
         else {console.log('Game concluded, Player ' + activePlayer.id + ' wins.')};
     };
-    return gameControler();
+    return { gameControler };
 };
 
-ticTacToe(0,0) //1
-ticTacToe(2,0)
-ticTacToe(1,1) //1
-ticTacToe(0,1)
-ticTacToe(2,2) //1
-ticTacToe(0,2)
+const app = (() => {
+    const players = (player1, player2) => setPlayers(player1, player2);
 
+    const getGameType = () => {};
 
-// players[0].active = true; //Remover tras depuración
-// gameboard[0][2].data.mark = true;
-// gameboard[0][2].data.player = 1;
-// gameboard[1][1].data.mark = true;
-// gameboard[1][1].data.player = 1;
-// gameboard[2][0].data.mark = true;
-// gameboard[2][0].data.player = 1;
+    const getPlayerName = (type) => {
+        let name = '';
+        let getName;
+        let setName;
+        type === 'person' ? name = getName : name = setName;
+        return name;
+    };
+    const names = (() => {let name1, name2; return { name1, name2 }})();
+
+    const play = ticTacToe(players(names.name1,names.name2))
+    play.gameControler(0,0); //1
+    play.gameControler(2,0); //2
+    play.gameControler(1,1); //1
+    play.gameControler(1,0); //2
+    play.gameControler(2,2); //1
+    play.gameControler(0,1); //2
+})();

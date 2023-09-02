@@ -9,45 +9,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;600&family=Gochi+Hand&family=Montserrat:wght@600&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <header>
-        <h1>Tic tac toe</h1>
+        <h1> Tic tac toe</h1>
     </header>
     <section id="selectGameContainer">
-        <h2>What will the game be like?</h2>
-        <div id="p_VS_m_Op_Container">
+        <h2>Choose game mode:</h2>
+        <div id="p_VS_m_Op_Container" class="optionContainer">
+            <ion-icon name="person-outline"></ion-icon>
             <p>Player vs. Machine</p>
+            <ion-icon name="hardware-chip-outline"></ion-icon>
         </div>
-        <div id="p_VS_p_Op_Container">
+        <div id="p_VS_p_Op_Container" class="optionContainer">
+            <ion-icon name="person-outline"></ion-icon>
             <p>Player vs. Player</p>
+            <ion-icon name="person-outline"></ion-icon>
         </div>
-        <div id="m_VS_m_Op_Container">
+        <div id="m_VS_m_Op_Container" class="optionContainer">
+            <ion-icon name="hardware-chip-outline"></ion-icon>
             <p>Machine vs. Machine</p>
+            <ion-icon name="hardware-chip-outline"></ion-icon>
         </div>
         <button id="startGameButton">Start</button>
     </section>
     <section id="gameContainer">
         <div id="scoreboard">
-            <div id="player1score">
-                <div id="firstDigit_p1">1</div>
-                <div id="secondDigit_p1">0</div>
+            <div id="player1scoreContainer">
+                <p id="player1name">Manuel</p>
+                <p id="player1score" class="loosing">01</p>
             </div>
-            <div id="player2score">
-                <div id="firstDigit_p2"></div>
-                <div id="secondDigit_p2"></div>
+            <div id="player2scoreContainer">
+                <p id="player2name">Mitzel</p>
+                <p id="player2score" class="winning">03</p>
             </div>
         </div>
         <div id="gridContainer">
-            <div id="cell1"></div>
-            <div id="cell2"></div>
-            <div id="cell3"></div>
-            <div id="cell4"></div>
-            <div id="cell5"></div>
+            <div id="cell1">X</div>
+            <div id="cell2">O</div>
+            <div id="cell3">X</div>
+            <div id="cell4">O</div>
+            <div id="cell5">X</div>
             <div id="cell6"></div>
-            <div id="cell7"></div>
+            <div id="cell7">X</div>
             <div id="cell8"></div>
-            <div id="cell9"></div>
+            <div id="cell9">O</div>
+        </div>
+    </section>
+    <section id="adviseSection">
+        <p>Mitztel wins!</p>
+        <div class="adviceButtons">
+            <button type="button" id="changeModeButton">Change mode</button>
+            <button type="button" id="playAgainButton">Play again</button>
         </div>
     </section>
     <footer>Front-end project by MPenunuri.</footer>

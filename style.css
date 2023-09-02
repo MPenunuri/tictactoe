@@ -24,11 +24,215 @@ time, mark, audio, video {
     src: url('./cursed-timer-ulil-font/CursedTimerUlil-Aznm.ttf') format('truetype');
 }
 
-#scoreboard {
-    font-family: 'cursed-timer';
+@font-face {
+    font-family: 'southampton';
+    src: url('./southampton-font/Southampton-MRqp.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'greatday';
+    src: url('./great-day-font/GreatDayPersonalUse-14M2.ttf') format('truetype');
+}
+
+body, header, section, .optionContainer, div#scoreboard, div#scoreboard > div, 
+#gridContainer > div, #adviseSection, .adviceButtons, footer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(https://images.unsplash.com/photo-1543746379-597ec1921f02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80);
+	z-index: -1;
+  }
+  
+body{
+    font-family: 'southampton';
+	position: relative;
+	z-index: 1;
+	gap: 2rem;
+	margin: 4vh 4vw 8vh;
+}
+  
+header, .optionContainer, div#scoreboard, .adviceButtons, footer{
+	flex-direction: row;
+}
+
+h1, #scoreboard > div, #gridContainer > div{
+	background-color: rgba(124, 122, 126, 0.8);
+	border-style: solid;
+	border-radius: 40px;
+	box-shadow: 2px 2px 4px rgb(238, 40, 238), 4px 4px 6px white, 8px 8px 8px black;
+}
+
+h1, h2{
+	font-family: 'greatday';
+	font-style: italic;
+	font-size: 4rem;
+	color: rgb(238, 40, 238);
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+	padding: 2rem;
+}
+
+#selectGameContainer{
+	display: none;
+	gap: 2rem;
+	margin-bottom: 8vh;
+}
+
+#selectGameContainer > div, #startGameButton,
+#changeModeButton, #playAgainButton{
+	color: rgb(0, 221, 255);
+	text-align: center;
+	font-size: 3rem;
+	padding: 2rem;
+	background-color: rgba(124, 122, 126, 0.8);
+	border-style: solid;
+	border-radius: 40px;
+	box-shadow: 2px 2px 4px rgb(0, 221, 255), 4px 4px 6px white, 8px 8px 8px black;
+}
+
+h2{
+	font-size: 5rem;
+	font-family: 'southampton';
+	color: rgb(240, 110, 110);
+	padding: 0;
+}
+
+.optionContainer{
+	gap: 2rem;
+}
+
+ion-icon{
+	color: rgb(0, 221, 255);
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+}
+
+#startGameButton{
+	padding: 2rem 2rem 1rem 2rem;
+	font-family: 'greatday';
+	color: rgb(0, 221, 255);
+}
+
+#selectGameContainer > div:hover, #startGameButton:hover, 
+#changeModeButton:hover, #playAgainButton:hover{
+	transform: translate(-3px,-3px);
+	color: rgb(238, 40, 238);
+	cursor: pointer;
+	background-color: rgba(124, 122, 126, 0.95);
+	box-shadow: 2px 2px 4px rgb(238, 40, 238), 4px 4px 6px white, 8px 8px 8px black;
+}
+
+#gameContainer{
+	display: flex;
+}
+
+div#scoreboard{
+	justify-content: space-around;
+	gap: 1rem;
+	width: 20rem;
+	margin: 2rem;
+	color:rgb(0, 221, 255);
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+}
+
+div#scoreboard > div{
+	padding: .75rem;
+	width: 40%;
+	flex-shrink: 0;
+	gap: 1.5rem;
+}
+
+#player1name, #player2name{
+    font-family: 'southampton';
+	font-size: 4rem;
+}
+
+#player1score, #player2score{
+	font-family: 'cursed-timer';
+	font-size: 2rem;
+}
+
+.loosing{
+	color: rgb(240, 110, 110);
+}
+
+.winning{
+	color: greenyellow;
 }
 
 #gridContainer{
-    font-family: 'Sedgwick Ave Display';
+	z-index: 2;
+	width: 20rem;
+	height: 20rem;
     display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: .5rem;
+	padding: .4rem;
+	border-radius: 10px;
+	margin-bottom: 8vh;
 }
+
+#gridContainer > div{
+	padding: 1rem;
+	background-image: url(https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1615&q=80);
+	filter: opacity(70%);
+	border-radius: 10px;
+	font-family: 'Sedgwick Ave Display';
+	font-size: 3rem;
+}
+
+#gridContainer:hover > div:hover{
+	cursor: pointer;
+	filter: opacity(100%);
+	transform: translate(-3px,-3px)
+}
+
+#adviseSection{
+	display: none;
+	z-index: 3;
+	background-color: rgb(109, 104, 104,.9);
+	position: absolute;
+	top: -4vh;
+	left: -4vw;
+	bottom: 0;
+	height: 130vh;
+	width: 100vw;
+	gap: 6rem;
+}
+
+#adviseSection > p {
+	font-size: 8rem;
+	color: greenyellow;
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+	background-color: rgb(240, 255, 255,.2);
+	padding: 4rem;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.adviceButtons{
+	gap: 2rem;
+}
+
+#changeModeButton, #playAgainButton{
+	font-family: 'southampton';
+	font-size: 2rem;
+}
+
+footer{
+	font-size: 2rem;
+	z-index: 2;
+	position: absolute;
+	bottom: -15vh;
+	margin-bottom: 10vh;
+}
+
