@@ -18,48 +18,67 @@
     </header>
     <section id="selectGameContainer">
         <h2>Choose game mode:</h2>
-        <div id="p_VS_m_Op_Container" class="optionContainer">
+        <div id="p_VS_m_Op" class="optionContainer">
             <ion-icon name="person-outline"></ion-icon>
             <p>Player vs. Machine</p>
             <ion-icon name="hardware-chip-outline"></ion-icon>
         </div>
-        <div id="p_VS_p_Op_Container" class="optionContainer">
+        <div id="p_VS_p_Op" class="optionContainer">
             <ion-icon name="person-outline"></ion-icon>
             <p>Player vs. Player</p>
             <ion-icon name="person-outline"></ion-icon>
         </div>
-        <div id="m_VS_m_Op_Container" class="optionContainer">
+        <div id="m_VS_m_Op" class="optionContainer">
             <ion-icon name="hardware-chip-outline"></ion-icon>
             <p>Machine vs. Machine</p>
             <ion-icon name="hardware-chip-outline"></ion-icon>
         </div>
-        <button id="startGameButton">Start</button>
+        <button id="startGameButton1" class="startGameButton">Start</button>
     </section>
+    <form action="" id="form">
+        <button id="closeFormBtn">x</button>
+        <fieldset>
+            <legend>Enter your name</legend>
+            <div id="inputName1Container">
+                <label for="inputName1">Player one:</label>
+                <input type="text" name="player1name" id="inputName1">
+            </div>
+            <div id="inputName2Container">
+                <label for="inputName2">Player two:</label>
+                <input type="text" name="player2name" id="inputName2">
+            </div>
+            <button type="button" id="startGameButton2" class="startGameButton">Start</button>
+        </fieldset>
+    </form>
+    <div id="changeTurnAdvice">
+        <p>Your turn,</p>
+        <p id="currentPlayer">Mitzel</p>
+    </div>
     <section id="gameContainer">
         <div id="scoreboard">
-            <div id="player1scoreContainer">
-                <p id="player1name">Manuel</p>
-                <p id="player1score" class="loosing">01</p>
+            <div id="player1scoreContainer" class="playerDataContainer currentPlayer">
+                <p id="player1name"></p>
+                <p id="player1score">0</p>
             </div>
-            <div id="player2scoreContainer">
-                <p id="player2name">Mitzel</p>
-                <p id="player2score" class="winning">03</p>
+            <div id="player2scoreContainer" class="playerDataContainer otherPlayer">
+                <p id="player2name"></p>
+                <p id="player2score">0</p>
             </div>
         </div>
         <div id="gridContainer">
-            <div id="cell1">X</div>
-            <div id="cell2">O</div>
-            <div id="cell3">X</div>
-            <div id="cell4">O</div>
-            <div id="cell5">X</div>
-            <div id="cell6"></div>
-            <div id="cell7">X</div>
-            <div id="cell8"></div>
-            <div id="cell9">O</div>
+            <div id="0-0" class="availableCell"></div>
+            <div id="0-1" class="availableCell"></div>
+            <div id="0-2" class="availableCell"></div>
+            <div id="1-0" class="availableCell"></div>
+            <div id="1-1" class="availableCell"></div>
+            <div id="1-2" class="availableCell"></div>
+            <div id="2-0" class="availableCell"></div>
+            <div id="2-1" class="availableCell"></div>
+            <div id="2-2" class="availableCell"></div>
         </div>
     </section>
     <section id="adviseSection">
-        <p>Mitztel wins!</p>
+        <p id="winner"></p>
         <div class="adviceButtons">
             <button type="button" id="changeModeButton">Change mode</button>
             <button type="button" id="playAgainButton">Play again</button>

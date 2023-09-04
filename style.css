@@ -34,7 +34,8 @@ time, mark, audio, video {
     src: url('./great-day-font/GreatDayPersonalUse-14M2.ttf') format('truetype');
 }
 
-body, header, section, .optionContainer, div#scoreboard, div#scoreboard > div, 
+body, header, section, .optionContainer, form, fieldset, fieldset > div, 
+#changeTurnAdvice, div#scoreboard, div#scoreboard > div, 
 #gridContainer > div, #adviseSection, .adviceButtons, footer{
 	display: flex;
 	flex-direction: column;
@@ -61,11 +62,11 @@ body{
 	margin: 4vh 4vw 8vh;
 }
   
-header, .optionContainer, div#scoreboard, .adviceButtons, footer{
+header, .optionContainer, div#scoreboard, #changeTurnAdvice, .adviceButtons, footer{
 	flex-direction: row;
 }
 
-h1, #scoreboard > div, #gridContainer > div{
+h1{
 	background-color: rgba(124, 122, 126, 0.8);
 	border-style: solid;
 	border-radius: 40px;
@@ -82,12 +83,12 @@ h1, h2{
 }
 
 #selectGameContainer{
-	display: none;
+	display: flex;
 	gap: 2rem;
 	margin-bottom: 8vh;
 }
 
-#selectGameContainer > div, #startGameButton,
+#selectGameContainer > div, .startGameButton,
 #changeModeButton, #playAgainButton{
 	color: rgb(0, 221, 255);
 	text-align: center;
@@ -115,13 +116,17 @@ ion-icon{
 	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
 }
 
-#startGameButton{
+.startGameButton{
 	padding: 2rem 2rem 1rem 2rem;
 	font-family: 'greatday';
 	color: rgb(0, 221, 255);
 }
 
-#selectGameContainer > div:hover, #startGameButton:hover, 
+#startGameButton1{
+	display: none;
+}
+
+#selectGameContainer > div:hover, .startGameButton:hover, 
 #changeModeButton:hover, #playAgainButton:hover{
 	transform: translate(-3px,-3px);
 	color: rgb(238, 40, 238);
@@ -130,8 +135,92 @@ ion-icon{
 	box-shadow: 2px 2px 4px rgb(238, 40, 238), 4px 4px 6px white, 8px 8px 8px black;
 }
 
+form{
+	z-index: 3;
+	display: none;
+	position: absolute;
+	top: 20%;
+	left: 5%;
+	height: auto;
+	padding: 1rem;
+	width: 80%;
+	background-color: rgb(128, 128, 128,.9);
+	border-radius: 40px;
+	box-shadow: 2px 2px 4px rgb(238, 40, 238), 4px 4px 6px white, 8px 8px 8px black;
+}
+
+fieldset{
+	gap: 2rem;
+	font-size: 4rem;
+	color:rgb(0, 221, 255);
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+	text-align: center;
+}
+
+fieldset > div{
+	font-size: 3rem;
+	gap: 1rem;
+}
+
+legend{
+	margin-bottom: 2rem;
+	color: rgb(240, 110, 110);
+}
+
+input{
+	width: 80%;
+	font-family: 'cursed-timer';
+	font-size: 2rem;
+	border-radius: 40px;
+	border-style: none;
+	text-align: center;
+	padding: 1rem;
+	filter: opacity(80%);
+}
+
+#inputName2Container{
+	display: none;
+}
+
+input:focus{
+	outline: 2px solid rgb(238, 40, 238);
+}
+
+#closeFormBtn{
+	padding: .25rem .5rem;
+	font-family: 'cursed-timer';
+	color: white;
+	border-radius: 100%;
+	border: solid white;
+	background-color: black;
+	box-shadow: 8px 8px 8px black;
+	z-index: 4;
+	position: absolute;
+	top:-2%;
+	left: 98%;
+}
+
+#closeFormBtn:hover{
+	transform: translate(-3px,-3px);
+}
+
+#changeTurnAdvice{
+	display: none;
+	position: absolute;
+	top: 40%;
+	z-index: 3;
+	background-color: rgb(128, 128, 128,.9);
+	border-radius: 40px;
+	box-shadow: 2px 2px 4px rgb(238, 40, 238), 4px 4px 6px white, 8px 8px 8px black;
+	font-size: 4rem;
+	gap: 1rem;
+	padding: 2rem;
+	color:rgb(0, 221, 255);
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+}
+
 #gameContainer{
-	display: flex;
+	display: none;
 }
 
 div#scoreboard{
@@ -139,11 +228,9 @@ div#scoreboard{
 	gap: 1rem;
 	width: 20rem;
 	margin: 2rem;
-	color:rgb(0, 221, 255);
-	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
 }
 
-div#scoreboard > div{
+.playerDataContainer{
 	padding: .75rem;
 	width: 40%;
 	flex-shrink: 0;
@@ -152,7 +239,7 @@ div#scoreboard > div{
 
 #player1name, #player2name{
     font-family: 'southampton';
-	font-size: 4rem;
+	font-size: 3.5rem;
 }
 
 #player1score, #player2score{
@@ -168,6 +255,24 @@ div#scoreboard > div{
 	color: greenyellow;
 }
 
+.playerDataContainer, .availableCell{
+	color:black;
+	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
+	background-color: rgba(124, 122, 126, 0.8);
+	border-style: solid;
+	border-radius: 40px;
+	box-shadow: 8px 8px 8px rgb(60, 61, 61);
+}
+
+.otherPlayer{
+	box-shadow: 2px 2px 4px rgb(60, 61, 61), 4px 4px 6px white, 8px 8px 8px black;
+}
+
+.currentPlayer{
+	color: rgb(0, 221, 255);
+	box-shadow: 2px 2px 4px rgb(0, 221, 255), 4px 4px 6px white, 8px 8px 8px black;
+}
+
 #gridContainer{
 	z-index: 2;
 	width: 20rem;
@@ -175,7 +280,7 @@ div#scoreboard > div{
     display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	gap: .5rem;
+	gap: 1rem;
 	padding: .4rem;
 	border-radius: 10px;
 	margin-bottom: 8vh;
@@ -183,14 +288,13 @@ div#scoreboard > div{
 
 #gridContainer > div{
 	padding: 1rem;
-	background-image: url(https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1615&q=80);
-	filter: opacity(70%);
+	filter: opacity(85%);
 	border-radius: 10px;
-	font-family: 'Sedgwick Ave Display';
 	font-size: 3rem;
+	font-weight: bolder;
 }
 
-#gridContainer:hover > div:hover{
+#gridContainer:hover > div:hover:not(.currentPlayer, .otherPlayer){
 	cursor: pointer;
 	filter: opacity(100%);
 	transform: translate(-3px,-3px)
@@ -214,7 +318,7 @@ div#scoreboard > div{
 	color: greenyellow;
 	text-shadow: 2px 2px 4px white, 4px 4px 6px black;
 	background-color: rgb(240, 255, 255,.2);
-	padding: 4rem;
+	padding: 3rem;
 	border-radius: 20px;
 	text-align: center;
 }
